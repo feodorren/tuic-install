@@ -13,13 +13,13 @@ curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/0.8.5/
 2. 下载配置文件至目录 /root/tuic
 
 ```
-curl -Lo /root/tuic/tuic_config.json https://raw.githubusercontent.com/chika0801/tuic-install/main/config_server.json
+curl -Lo /root/tuic/tuic_config.json https://raw.githubusercontent.com/feodorren/tuic-install/main/config_server.json
 ```
 
 3. 下载systemctl配置
 
 ```
-curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/chika0801/tuic-install/main/tuic.service
+curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/feodorren/tuic-install/main/tuic.service
 ```
 
 4. 上传证书和私钥
