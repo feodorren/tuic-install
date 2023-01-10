@@ -6,7 +6,7 @@
         "ip": "10.0.0.1",
         "congestion_controller": "bbr",
         "alpn": ["h3"],
-        "reduce_rtt": true,
+        "reduce_rtt": true
     },
     "local": {
         "port": 50001
