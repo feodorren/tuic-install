@@ -1,10 +1,9 @@
 {
-    "port": 16386,
+    "port": 8443,
     "token": ["chika"],
-    "certificate": "fullchain.cer",
-    "private_key": "private.key",
+    "certificate": "/root/tuic/fullchain.cer",
+    "private_key": "/root/tuic/private.key",
     "ip": "::",
     "congestion_controller": "bbr",
     "alpn": ["h3"],
-    "max_udp_relay_packet_size": 1146
 }
