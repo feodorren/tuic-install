@@ -1,7 +1,7 @@
 ## [TUIC](https://github.com/EAimTY/tuic) 安装指南
 
 1. 下载程序（linux-amd64）
-新建默认文件保存目录
+新建默认文件保存目录 /root/tuic
 ```
 mkdir /root/tuic
 ```
@@ -93,5 +93,13 @@ systemctl status tuic
 | SNI | 证书中包含的域名 |
 | ALPN | h3 |
 | 备注 | 留空 |
+
+</details>
+
+## Surge 配置指南
+
+<details><summary>点击查看</summary>
+
+ProxyName = tuic, 域名, 8443, token=chika, alpn=h3
 
 </details>
