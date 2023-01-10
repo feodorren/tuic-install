@@ -1,13 +1,12 @@
 {
     "relay": {
         "server": "chika.example.com",
-        "port": 16386,
+        "port": 8443,
         "token": "chika",
         "ip": "10.0.0.1",
         "congestion_controller": "bbr",
         "alpn": ["h3"],
         "reduce_rtt": true,
-        "max_udp_relay_packet_size": 1146
     },
     "local": {
         "port": 50001
