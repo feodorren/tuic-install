@@ -5,5 +5,5 @@
     "private_key": "/root/tuic/private.key",
     "ip": "::",
     "congestion_controller": "bbr",
-    "alpn": ["h3"],
+    "alpn": ["h3"]
 }
