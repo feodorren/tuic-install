@@ -1,15 +1,19 @@
 ## [TUIC](https://github.com/EAimTY/tuic) 安装指南
 
 1. 下载程序（linux-amd64）
+新建默认文件保存目录
+```
+mkdir /root/tuic
+```
+下载 tuic 程序至目录 /root/tuic 并保存为 tuic 文件。
+```
+curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-server-0.8.5-x86_64-linux-musl && chmod +x /root/tuic/tuic
+```
+
+2. 下载配置文件至目录 /root/tuic
 
 ```
-curl -Lo /root/tuic https://github.com/EAimTY/tuic/releases/download/0.8.4/tuic-server-0.8.4-x86_64-linux-musl && chmod +x /root/tuic
-```
-
-2. 下载配置
-
-```
-curl -Lo /root/tuic_config.json https://raw.githubusercontent.com/chika0801/tuic-install/main/config_server.json
+curl -Lo /root/tuic/tuic_config.json https://raw.githubusercontent.com/chika0801/tuic-install/main/config_server.json
 ```
 
 3. 下载systemctl配置
@@ -20,7 +24,7 @@ curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/chik
 
 4. 上传证书和私钥
 
-- 将证书文件改名为`fullchain.cer`，将私钥文件改名为`private.key`，使用WinSCP登录你的VPS，将它们上传到`/root/`目录。
+- 将证书文件改名为`fullchain.cer`，将私钥文件改名为`private.key`，使用WinSCP登录你的VPS，将它们上传到`/root/tuic`目录。
 
 5. 启动程序
 
@@ -34,15 +38,15 @@ systemctl status tuic
 
 | 项目 | |
 | :--- | :--- |
-| 程序 | /root/tuic |
-| 配置 | /root/tuic_config.json |
-| 检查 | /root/tuic -c tuic_config.json |
+| 程序 | /root/tuic/tuic |
+| 配置 | /root/tuic/tuic_config.json |
+| 检查 | /root/tuic/tuic -c /root/tuic/tuic_config.json |
 | 查看日志 | journalctl -u tuic --output cat -e |
 | 实时日志 | journalctl -u tuic --output cat -f |
 
 ## v2rayN 5.x 配置指南
 
-1. 下载Windows客户端程序[tuic-client-0.8.4-x86_64-windows-msvc.exe](https://github.com/EAimTY/tuic/releases/download/0.8.4/tuic-client-0.8.4-x86_64-windows-msvc.exe)，重命令为`tuic.exe`，复制到v2rayN文件夹。
+1. 下载Windows客户端程序[tuic-client-0.8.5-x86_64-windows-msvc.exe](https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-client-0.8.5-x86_64-windows-msvc.exe)，重命令为`tuic.exe`，复制到v2rayN文件夹。
 
 2. 下载客户端配置[config_client.json](https://raw.githubusercontent.com/chika0801/tuic-install/main/config_client.json)，修改`chika.example.com`为证书中包含的域名，修改`10.0.0.1`为VPS的IP。
 
@@ -59,8 +63,8 @@ systemctl status tuic
 | 选项 | 值 |
 | :--- | :--- |
 | 配置名称 |  |
-| 服务器 | VPS的IP |
-| 服务器端口 | 16386 |
+| 服务器 | VPS的IP 或 域名 |
+| 服务器端口 | 8443 |
 | Token | chika |
 | 应用层协议协商 | h3 |
 | 证书（链） | 留空 |
@@ -69,7 +73,6 @@ systemctl status tuic
 | Disable SNI |不勾 |
 | 服务器名称指示 | 证书中包含的域名 |
 | Reduce RTT | 勾上 |
-| MTU | 1146 |
 
 </details>
 
@@ -81,8 +84,8 @@ systemctl status tuic
 | :--- | :--- |
 | 配置名称 |  |
 | 类型 | TUIC |
-| 地址 | VPS的IP |
-| 端口 | 16386 |
+| 地址 | VPS的IP 或 域名 |
+| 端口 | 8443 |
 | 密码 | chika |
 | 模式 | bbr |
 | 允许不安全 | 不选 |
