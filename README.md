@@ -24,8 +24,21 @@ curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/feod
 
 4. 上传证书和私钥
 
-- 将证书文件改名为`fullchain.cer`，将私钥文件改名为`private.key`，使用WinSCP登录你的VPS，将它们上传到`/root/tuic`目录。
+- 将证书文件 private 和 public 上传到`/root/tuic`目录。
 
+- 修改配置文件`/root/tuic/tuic_config.json/`
+```
+nano /etc/systemd/system/tuic.service
+```
+- 确认证书和私钥路径以及名称正确,cer/key/pem格式均可，自行修改以下内容即可。
+```
+{
+    ......
+    "certificate": "/root/tuic/fullchain.cer",
+    "private_key": "/root/tuic/private.key",
+    ......
+}
+```
 5. 启动程序
 
 ```
