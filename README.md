@@ -1,6 +1,6 @@
-## [TUIC](https://github.com/EAimTY/tuic) 安装指南
+# [TUIC](https://github.com/EAimTY/tuic) 安装指南
 
-1. 下载程序（linux-amd64）
+## 1. 下载程序（linux-amd64）
 新建默认文件保存目录 /root/tuic
 ```
 mkdir /root/tuic
@@ -10,19 +10,19 @@ mkdir /root/tuic
 curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-server-0.8.5-x86_64-linux-musl && chmod +x /root/tuic/tuic
 ```
 
-2. 下载配置文件至目录 /root/tuic
+## 2. 下载配置文件至目录 /root/tuic
 
 ```
 curl -Lo /root/tuic/tuic_config.json https://raw.githubusercontent.com/feodorren/tuic-install/main/config_server.json
 ```
 
-3. 下载systemctl配置
+## 3. 下载systemctl配置
 
 ```
 curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/feodorren/tuic-install/main/tuic.service
 ```
 
-4. 获取证书和私钥
+## 4. 获取证书和私钥
 
 - 申请证书
 ```
@@ -58,7 +58,7 @@ chmod +x /etc/letsencrypt/renewal-hooks/post/tuic.sh
 ```
 certbot renew --cert-name tuic.example.com --dry-run
 ```
-5. 启动程序
+## 5. 启动程序
 
 ```
 systemctl daemon-reload && systemctl enable --now tuic
