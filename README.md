@@ -22,22 +22,41 @@ curl -Lo /root/tuic/tuic_config.json https://raw.githubusercontent.com/feodorren
 curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/feodorren/tuic-install/main/tuic.service
 ```
 
-4. 上传证书和私钥
+4. 获取证书和私钥
 
-- 将证书文件 private 和 public 上传到`/root/tuic`目录。
+- 申请证书
+```
+certbot certonly \
+--standalone \
+--agree-tos \
+--no-eff-email \
+--email tuic@example.com \
+-d tuic.example.com
+```
+- 将证书保存到tuic配置文件内配置的位置：
+```
+cat /etc/letsencrypt/live/tuic.example.com/fullchain.pem > /root/tuic/fullchain.pem
+cat /etc/letsencrypt/live/tuic.example.com/privkey.pem > /root/tuic/privkey.pem
 
-- 修改配置文件`/root/tuic/tuic_config.json`
 ```
-nano /root/tuic/tuic_config.json
+- 新建一个certbot的hook脚本文件，用于让tuic重新加载续期后的新证书：
 ```
-- 确认证书和私钥路径以及名称正确,cer/key/pem格式均可，自行修改以下内容即可。
+nano /etc/letsencrypt/renewal-hooks/post/tuic.sh
 ```
-{
-    ......
-    "certificate": "/root/tuic/fullchain.cer",
-    "private_key": "/root/tuic/private.key",
-    ......
-}
+```
+cat /etc/letsencrypt/live/tuic.example.com/fullchain.pem > /root/tuic/fullchain.pem
+cat /etc/letsencrypt/live/tuic.example.com/privkey.pem > /root/tuic/privkey.pem
+systemctl restart tuic
+```
+
+- 给予脚本执行权限
+```
+chmod +x /etc/letsencrypt/renewal-hooks/post/tuic.sh
+```
+
+- 测试续期的情况以及脚本能否正常运行：
+```
+certbot renew --cert-name tuic.example.com --dry-run
 ```
 5. 启动程序
 
@@ -116,3 +135,11 @@ systemctl status tuic
 ProxyName = tuic, 域名, 8443, token=chika, alpn=h3
 
 </details>
+
+
+## 鸣谢
+https://github.com/EAimTY/tuic  
+
+https://github.com/chika0801/tuic-install  
+
+https://lala.im/8424.html
