@@ -26,9 +26,9 @@ curl -Lo /etc/systemd/system/tuic.service https://raw.githubusercontent.com/feod
 
 - 将证书文件 private 和 public 上传到`/root/tuic`目录。
 
-- 修改配置文件`/root/tuic/tuic_config.json/`
+- 修改配置文件`/root/tuic/tuic_config.json`
 ```
-nano /etc/systemd/system/tuic.service
+nano /root/tuic/tuic_config.json
 ```
 - 确认证书和私钥路径以及名称正确,cer/key/pem格式均可，自行修改以下内容即可。
 ```
