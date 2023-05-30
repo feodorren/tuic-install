@@ -76,63 +76,13 @@ systemctl status tuic
 | 查看日志 | journalctl -u tuic --output cat -e |
 | 实时日志 | journalctl -u tuic --output cat -f |
 
-## v2rayN 5.x 配置指南
 
-1. 下载Windows客户端程序[tuic-client-0.8.5-x86_64-windows-msvc.exe](https://github.com/EAimTY/tuic/releases/download/0.8.5/tuic-client-0.8.5-x86_64-windows-msvc.exe)，重命令为`tuic.exe`，复制到v2rayN文件夹。
-
-2. 下载客户端配置[config_client.json](https://raw.githubusercontent.com/chika0801/tuic-install/main/config_client.json)，修改`chika.example.com`为证书中包含的域名，修改`10.0.0.1`为VPS的IP。
-
-3. `服务器` ——> `添加自定义配置服务器` ——> `浏览(B)` ——> `选择客户端配置` ——> `Core类型 tuic` ——> `Socks端口 50001`
-
-![1](https://user-images.githubusercontent.com/88967758/195763590-f035f90f-f228-4022-b318-770791c63b92.jpg)
-
-小技巧：只要证书在有效期内，证书中包含的域名不用解析到VPS的IP。一份证书，在多个VPS上使用。
-
-## SagerNet 配置指南
-
-<details><summary>点击查看</summary>
-
-| 选项 | 值 |
-| :--- | :--- |
-| 配置名称 |  |
-| 服务器 | VPS的IP 或 域名 |
-| 服务器端口 | 8443 |
-| Token | chika |
-| 应用层协议协商 | h3 |
-| 证书（链） | 留空 |
-| UDP Relay Mode | NATIVE |
-| Congestion Controller | BBR |
-| Disable SNI |不勾 |
-| 服务器名称指示 | 证书中包含的域名 |
-| Reduce RTT | 勾上 |
-
-</details>
-
-## Shadowrocket 配置指南
-
-<details><summary>点击查看</summary>
-
-| 选项 | 值 |
-| :--- | :--- |
-| 配置名称 |  |
-| 类型 | TUIC |
-| 地址 | VPS的IP 或 域名 |
-| 端口 | 8443 |
-| 密码 | chika |
-| 模式 | bbr |
-| 允许不安全 | 不选 |
-| UDP转发 | 选上 |
-| SNI | 证书中包含的域名 |
-| ALPN | h3 |
-| 备注 | 留空 |
-
-</details>
 
 ## Surge 配置指南
 
 <details><summary>点击查看</summary>
 
-ProxyName = tuic, 域名, 8443, token=chika, alpn=h3
+TUIC = tuic, domain, 38886, sni=domain, server-cert-fingerprint-sha256=XX:XX:XXX......  , uuid=b1b269fc-3371-4a69-b812-765030db1638, alpn=h3, password=password0, version=5
 
 </details>
 
