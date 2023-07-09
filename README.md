@@ -7,11 +7,11 @@ mkdir /root/tuic
 ```
 用于aarch64架构, 下载 tuic 程序至目录 /root/tuic 并保存为 tuic 文件。
 ```
-curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0-beta0/tuic-server-1.0.0-beta0-aarch64-unknown-linux-musl && chmod +x /root/tuic/tuic
+curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0-rc0/tuic-server-1.0.0-beta0-aarch64-unknown-linux-musl && chmod +x /root/tuic/tuic
 ```
 用于x86_64架构, 下载 tuic 程序至目录 /root/tuic 并保存为 tuic 文件。
 ```
-curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0-beta0/tuic-server-1.0.0-beta0-x86_64-unknown-linux-musl && chmod +x /root/tuic/tuic
+curl -Lo /root/tuic/tuic https://github.com/EAimTY/tuic/releases/download/tuic-server-1.0.0-rc0/tuic-server-1.0.0-beta0-x86_64-unknown-linux-musl && chmod +x /root/tuic/tuic
 ```
 
 ## 2. 下载配置文件至目录 /root/tuic
